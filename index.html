@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>地理大发现 | 沉浸式历史科普网页</title>
+    <meta name="description" content="面向课堂展示的地理大发现交互网页，包含航线地图、时间线、历史事件深读、人物档案、知识图谱、航海工具和航海日志。">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%230a2632' stroke='%23f6d36b' stroke-width='4'/%3E%3Cpath d='M32 9l7 23-7 23-7-23z' fill='%23f6d36b'/%3E%3Cpath d='M9 32l23-7 23 7-23 7z' fill='%23fff0a8' opacity='.82'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="loader" id="loader" aria-label="页面加载中">
+      <div class="loader-wheel" aria-hidden="true"></div>
+      <svg class="loader-route" viewBox="0 0 360 90" aria-hidden="true"><path d="M18 62 C74 8 132 95 190 42 C244 -6 286 84 342 24"></path></svg>
+      <p>航线展开中</p>
+    </div>
+
+    <header class="site-header" aria-label="主导航">
+      <a class="brand" href="#cover" aria-label="返回封面"><span class="brand-mark" aria-hidden="true"></span><span>地理大发现</span></a>
+      <label class="nav-search" aria-label="搜索历史事件">
+        <span>搜索</span>
+        <input id="globalSearch" type="search" placeholder="人物、年份、地点、关键词">
+      </label>
+      <nav class="main-nav">
+        <a href="#cover">封面</a>
+        <a href="#map">航线地图</a>
+        <a href="#timeline">时间线</a>
+        <a href="#magellanFeature">环球专题</a>
+        <a href="#people">人物档案</a>
+        <a href="#graph">知识图谱</a>
+        <a href="#tools">航海工具</a>
+        <a href="#logs">航海日志</a>
+        <a href="#quiz">课堂小测</a>
+        <a href="#sources">资料来源</a>
+      </nav>
+    </header>
+
+    <aside class="progress-nav" id="progressNav" aria-label="页面进度导航"></aside>
+    <aside class="favorites-dock" id="favoritesDock" aria-label="我的重点事件"></aside>
+
+    <main>
+      <section class="hero reveal" id="cover" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">15-17 世纪的海路、贸易与世界联系</p>
+          <h1 id="hero-title">地理大发现</h1>
+          <p class="hero-copy">从好望角到香料群岛，从大西洋到太平洋，航海者、商人、王权与帝国共同改写了人类认识世界的尺度。</p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#map">开始探索</a>
+            <a class="secondary-link" href="#map">查看航线地图</a>
+            <a class="secondary-link" href="#timeline">浏览时间线</a>
+            <button class="secondary-link hero-button" type="button" id="heroPresentationButton">进入课堂展示模式</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-band info-cards reveal" aria-label="主题概览">
+        <article><strong>航海动因</strong><span>香料贸易、黄金需求、王权竞争和宗教传播共同推动远洋探索。</span></article>
+        <article><strong>技术条件</strong><span>罗盘、星盘、帆船、海图和远洋补给让跨洋航行更可控。</span></article>
+        <article><strong>关键人物</strong><span>郑和、迪亚士、达·伽马、哥伦布、麦哲伦、埃尔卡诺和德雷克等。</span></article>
+        <article><strong>历史影响</strong><span>全球贸易、殖民扩张、文明交流与冲突同时展开。</span></article>
+      </section>
+
+      <section class="section topic-digest reveal" aria-labelledby="digest-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Topic Digest</p><h2 id="digest-title">地理大发现主题速读</h2><p>结合百科资料整理为课堂可直接使用的六个理解入口：概念、动因、条件、过程、影响与评价。</p></div>
+        </div>
+        <div class="digest-grid">
+          <article><span>01</span><h3>概念界定</h3><p>地理大发现通常指 15 世纪末至 17 世纪，欧洲航海者在王室、商人和传教力量支持下开辟远洋航线，使欧亚非美之间的联系明显加强。</p></article>
+          <article><span>02</span><h3>经济动因</h3><p>欧洲对香料、贵金属和东方商品的需求持续增长，传统商路成本高且受多方控制，促使葡萄牙、西班牙等国寻找绕行海路。</p></article>
+          <article><span>03</span><h3>技术条件</h3><p>罗盘、星盘、海图、改良帆船和远洋补给经验共同提高了跨洋航行能力，让“离岸航行”逐渐变成可组织的国家行动。</p></article>
+          <article><span>04</span><h3>航行过程</h3><p>关键突破包括绕过好望角、横渡大西洋、抵达美洲、穿越麦哲伦海峡、横渡太平洋，以及由埃尔卡诺完成首次环球航行。</p></article>
+          <article><span>05</span><h3>世界影响</h3><p>新航路推动全球贸易网络形成雏形，促进物种、商品、人口和知识流动，也加速殖民扩张、奴役体系和原住民社会灾难。</p></article>
+          <article><span>06</span><h3>多元评价</h3><p>它既是地理认知和航海技术突破，也是暴力征服与不平等世界秩序形成的重要阶段；课堂讨论需要同时看到交流与冲突。</p></article>
+        </div>
+      </section>
+
+      <section class="section map-section reveal" id="map" aria-labelledby="map-title">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="eyebrow">Interactive Routes</p>
+            <h2 id="map-title">交互航线地图</h2>
+            <p>古地图作为视觉背景，半透明经纬网作为定位参考；航线点按经纬度转 SVG 坐标生成，点击航线、地点或时间节点会同步更新事件详情。</p>
+          </div>
+          <div class="mode-actions">
+            <button class="tool-button" type="button" id="compareToggle" aria-pressed="false">对比模式</button>
+            <button class="tool-button" type="button" id="classroomButton">课堂展示</button>
+          </div>
+        </div>
+
+        <div class="control-deck">
+          <div class="country-filter" id="countryFilter" aria-label="航线筛选"></div>
+          <label class="year-control"><span>年份筛选</span><input id="yearSlider" type="range" min="1405" max="1700" value="1700"><output id="yearOutput">1700</output></label>
+        </div>
+
+        <div class="search-results" id="searchResults" hidden></div>
+        <div class="compare-panel" id="comparePanel" hidden>
+          <div class="compare-options" id="compareOptions" aria-label="选择两个国家进行比较"></div>
+          <div class="compare-result" id="compareResult"></div>
+        </div>
+
+        <div class="map-layout immersive-map">
+          <div class="map-left-column">
+            <div class="map-board" id="mapBoard" aria-label="地理大发现航线示意图">
+              <div class="map-glow" id="mapGlow" aria-hidden="true"></div>
+              <img src="./assets/images/ortelius-world-map-1570.jpg" alt="1570 年奥特柳斯世界地图" class="map-bg zoomable">
+              <div class="real-map-bg" aria-hidden="true"></div>
+              <svg class="route-svg" id="routeSvg" viewBox="0 0 1000 500" role="img" aria-label="多国航线示意">
+                <defs>
+                  <filter id="routeGlow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#f1d99b" flood-opacity="0.9"></feDropShadow></filter>
+                  <linearGradient id="magellanGradient" x1="0" x2="1"><stop offset="0" stop-color="#fff0a8"></stop><stop offset="0.48" stop-color="#f6d36b"></stop><stop offset="1" stop-color="#69d2e7"></stop></linearGradient>
+                </defs>
+                <g class="geo-grid" id="geoGrid"></g>
+                <g class="route-layer" id="routeLayer"></g>
+                <g class="marker-layer" id="markerLayer"></g>
+              </svg>
+              <div class="ship-marker" id="shipMarker" aria-hidden="true"></div>
+              <div class="map-legend" id="mapLegend"></div>
+            </div>
+
+            <div class="map-support-panel" id="mapSupportPanel" aria-label="地图辅助信息面板">
+              <article class="support-card route-summary-card" id="currentRouteSummary"></article>
+              <div class="support-card stage-card">
+                <div class="support-card-head"><span>航线阶段播放条</span><strong id="stageCountLabel"></strong></div>
+                <div class="route-stage-strip" id="routeStageStrip" aria-label="航线阶段条"></div>
+              </div>
+              <article class="support-card location-card">
+                <div class="support-card-head"><span>关键地点</span><strong>点击定位</strong></div>
+                <div class="location-chip-list" id="locationChipList"></div>
+              </article>
+              <article class="support-card mini-log-card" id="miniLogCard"></article>
+              <article class="support-card quick-card">
+                <div class="support-card-head"><span>航海工具快链</span><strong>联动</strong></div>
+                <div class="quick-link-cards" id="quickToolCards"></div>
+              </article>
+              <article class="support-card quick-card">
+                <div class="support-card-head"><span>相关人物</span><strong>档案</strong></div>
+                <div class="quick-people-cards" id="quickPeopleCards"></div>
+              </article>
+              <article class="support-card support-quiz-card" id="supportQuizCard"></article>
+              <article class="support-card keyword-card">
+                <div class="support-card-head"><span>航线关键词</span><strong>筛选</strong></div>
+                <div class="support-keywords" id="supportKeywords"></div>
+              </article>
+            </div>
+          </div>
+
+          <aside class="event-detail-column">
+            <article class="event-detail captain-detail" id="eventDetail" aria-live="polite"></article>
+            <article class="favorites-hint" id="favoritesHint"></article>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section timeline-section reveal" id="timeline" aria-labelledby="timeline-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Chronology</p><h2 id="timeline-title">分段式时间线</h2><p>时间线按年份排序，重点事件发光突出；点击节点会高亮对应航线、地点和事件深读。</p></div>
+        </div>
+        <div class="timeline-axis" id="timelineList"></div>
+      </section>
+
+      <section class="section magellan-feature reveal" id="magellanFeature" aria-labelledby="magellan-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Circumnavigation Focus</p><h2 id="magellan-title">麦哲伦—埃尔卡诺环球航行专题</h2><p>完整呈现从西班牙出发、穿越南美南端、横渡太平洋、抵达香料群岛并经印度洋返航的环球路线。</p></div>
+          <button class="tool-button" type="button" id="focusMagellanButton">点亮环球航线</button>
+        </div>
+        <div class="magellan-grid">
+          <article class="feature-copy">
+            <h3>不是一条普通西班牙航线</h3>
+            <p>麦哲伦船队的目标是向西寻找香料群岛。麦哲伦完成了穿越海峡和横渡太平洋的关键航段，但在菲律宾麦克坦死亡；最终由埃尔卡诺率维多利亚号返回西班牙。</p>
+            <p>地图中这条航线被拆成跨越 180° 经线的两段，避免在世界地图边缘突然断开，并用阶段节点对应不同历史事件。</p>
+          </article>
+          <div class="magellan-stage-board" id="magellanStageBoard"></div>
+        </div>
+      </section>
+
+      <section class="section people-section reveal" id="people" aria-labelledby="people-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Navigator Profiles</p><h2 id="people-title">关键航海人物档案</h2><p>以人物肖像、航行经历、历史贡献和多元评价组织成课堂资料卡，便于直接阅读与讲解。</p></div>
+        </div>
+        <div class="people-grid" id="peopleGrid"></div>
+      </section>
+
+      <section class="section graph-section reveal" id="graph" aria-labelledby="graph-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Knowledge Compass</p><h2 id="graph-title">地理大发现知识图谱</h2><p>以罗盘式结构串联经济动因、技术条件、政治力量、航行过程和历史影响。</p></div>
+        </div>
+        <div class="knowledge-layout">
+          <div class="knowledge-graph" id="knowledgeGraph"></div>
+          <article class="knowledge-detail" id="knowledgeDetail"></article>
+        </div>
+      </section>
+
+      <section class="section tools-section reveal" id="tools" aria-labelledby="tools-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Captain's Desk</p><h2 id="tools-title">航海工具箱</h2><p>像船长桌面一样展示罗盘、星盘、四分仪、帆船、古地图、沙漏与航海日志。</p></div>
+        </div>
+        <div class="tools-layout">
+          <div class="tool-grid" id="toolGrid"></div>
+          <article class="tool-detail" id="toolDetail"></article>
+        </div>
+      </section>
+
+      <section class="section logs-section reveal" id="logs" aria-labelledby="logs-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Captain Logs</p><h2 id="logs-title">航海日志深读</h2><p>重点事件以“船长航海日志”风格呈现，点击任一日志可回到地图并激活对应事件。</p></div>
+        </div>
+        <div class="captain-log-grid" id="captainLogGrid"></div>
+      </section>
+
+      <section class="section quiz-section reveal" id="quiz" aria-labelledby="quiz-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Class Quiz</p><h2 id="quiz-title">课堂小测</h2><p>从重点事件中抽取复习题，答题后显示解释，帮助辨析关键史实。</p></div>
+        </div>
+        <div class="quiz-review" id="quizReview"></div>
+      </section>
+
+      <section class="section sources-section reveal" id="sources" aria-labelledby="sources-title">
+        <div class="section-heading compact-heading">
+          <div><p class="eyebrow">Attribution</p><h2 id="sources-title">图片与资料来源</h2><p>来源默认折叠，便于课堂备课核验，也避免占用过多页面高度。</p></div>
+        </div>
+        <div class="source-list" id="sourceList"></div>
+      </section>
+    </main>
+
+    <footer class="page-footer"><span>静态科普网页</span><span>地理大发现主题</span></footer>
+
+    <script src="./data/sources.js"></script>
+    <script src="./data/countries.js"></script>
+    <script src="./data/events.js"></script>
+    <script src="./data/routes.js"></script>
+    <script src="./data/people.js"></script>
+    <script src="./data/tools.js"></script>
+    <script src="./data/knowledgeGraph.js"></script>
+    <script src="./data/logs.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
